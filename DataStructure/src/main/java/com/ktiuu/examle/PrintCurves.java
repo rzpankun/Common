@@ -79,12 +79,26 @@ public class PrintCurves {
         }
     }
     public static void main(String[] args) {
-        int count = 3;
+        int count = 10;
+        long l1 = System.currentTimeMillis();
+        Set<String> strings1 = generateParens(count);
+        /*for (String s : strings1) {
+            System.out.println(s);
+        }*/
+        System.out.println(strings1.size());
+        long l2 = System.currentTimeMillis() - l1;
+        System.out.println(l2);
+
+
+        long l3 = System.currentTimeMillis();
         char[] str = new char[count * 2];
         ArrayList<String> strings = new ArrayList<>();
         addParen(strings, count, count, str, 0);
-        for (String string : strings) {
+        /*for (String string : strings) {
             System.out.println(string);
-        }
+        }*/
+        System.out.println(strings.size());
+        long l = System.currentTimeMillis() - l3;
+        System.out.println(l);
     }
 }
