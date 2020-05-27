@@ -38,7 +38,7 @@ public class RedisUtils {
     private static final long _timeBetweenEvictionRunsMillis = -1;
     private static final int _numTestsPerEvictionRun = 3;
     private static JedisPoolConfig jedisPoolConfig ;
-    private static JedisPool jedisPool;
+    public static JedisPool jedisPool;
 
     //    private static JedisCluster jedisCluster;
     static {

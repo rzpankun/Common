@@ -10,6 +10,7 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>CommonTool</module>
+    <module>DataStructure</module>
   </modules>
 
   <name>Common</name>

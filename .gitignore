@@ -10,3 +10,5 @@ Debug*/Debug*\ Libs
 *.xojo_uistate
 *.obsolete
 /.idea/
+*.iml
+*/target/*
