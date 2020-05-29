@@ -91,7 +91,7 @@ public class AVLTree<T extends Comparable<T>> {
     }
 
     public void remove(T element){
-
+        root = remove(root, element);
     }
 
     public AVLNode<T> remove(AVLNode<T> node,T element){
@@ -101,12 +101,38 @@ public class AVLTree<T extends Comparable<T>> {
         int compareTo = node.element.compareTo(element);
         if(compareTo > 0){
             node.left = remove(node.left, element);
+            node.height = Math.max(height(node.left), height(node.right)) + 1;
+            if(height(node.right) - height(node.left) == 2){
+                if(node.right.left != null){
+                    node = doubleWithRightChild(node);
+                }else{
+                    node = rotateWithRightChild(node);
+                }
+
+            }
         }else if(compareTo < 0){
             node.right = remove(node.right, element);
+            node.height = Math.max(height(node.left), height(node.left)) + 1;
+            if(height(node.left) - height(node.right) == 2){
+                if(node.left.right != null){
+                    node = doubleWithLeftChild(node);
+                }else{
+                    node = rotateWithLeftChild(node);
+                }
+            }
         }else{
-
+            if(node.left != null && node.right != null){
+                T min = findMin(node.right).element;
+                node.element = min;
+                node.right = remove(node.right, min);
+                if(height(node.left) - height(node.right) == 2){
+                    node = rotateWithLeftChild(node);
+                }
+            }else{
+                node = node.left != null ? node.left : node.right;
+            }
         }
-        return null;
+        return node;
     }
     private AVLNode<T> rotateWithLeftChild(AVLNode<T> node){
         AVLNode<T> left = node.left;
@@ -122,8 +148,8 @@ public class AVLTree<T extends Comparable<T>> {
         node.right = right.left;
         right.left = node;
         node.height = Math.max(height(node.left), height(node.right)) + 1;
-        right.height = Math.max(height(right.right),node.height) + 1;
-        return null;
+        right.height = Math.max(height(right.left),node.height) + 1;
+        return right;
     }
 
 
@@ -143,7 +169,26 @@ public class AVLTree<T extends Comparable<T>> {
     private int height(AVLNode<T> element){
         return element == null ? -1 : element.height;
     }
+    private void printTree(AVLNode<T> node , int i){
+        if(node == null){
+            return;
+        }
+        printSpit(i);
+        System.out.print(node.element);
+        System.out.println();
+        int a = ++i;
+        printTree(node.left,a);
+        printTree(node.right,a);
 
+    }
+    public void printSpit(int i){
+        for(int j = 0 ; j < i;j++){
+            System.out.print("*");
+        }
+    }
+    public void printTree(){
+        printTree(root, 0);
+    }
 
     static class AVLNode<T>{
         T element;
@@ -162,5 +207,25 @@ public class AVLTree<T extends Comparable<T>> {
             this.right = right;
             this.height = 0;
         }
+
+    }
+
+
+    public static void main(String[] args) {
+        AVLTree<Integer> tree = new AVLTree<>();
+        tree.insert(1);
+        tree.insert(11);
+        tree.insert(12);
+        tree.insert(3);
+        tree.insert(5);
+        tree.insert(7);
+        tree.insert(8);
+        tree.insert(9);
+        tree.printTree();
+        System.out.println("=====================");
+        tree.remove(12);
+        tree.remove(11);
+        tree.printTree();
+
     }
 }
