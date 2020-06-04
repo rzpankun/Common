@@ -1,7 +1,5 @@
 package com.ktiuu.graph;
 
-import sun.security.provider.certpath.Vertex;
-
 /**
  * @Create by pankun
  * @DATE 2020/6/3
@@ -16,9 +14,10 @@ import sun.security.provider.certpath.Vertex;
 public class Graph {
     private final int MAX_SIZE = 20;
     private Vertex[] vertexList;
-    private int[][] adjMat;
+    public int[][] adjMat;
     private int nVerts;
     private StackX stack;
+    private Queen queen;
     public Graph(){
         vertexList = new Vertex[MAX_SIZE];
         adjMat = new int[MAX_SIZE][MAX_SIZE];
@@ -29,6 +28,7 @@ public class Graph {
             }
         }
         stack = new StackX();
+        queen = new Queen();
     }
 
     public void addVertex(String string){
@@ -38,7 +38,7 @@ public class Graph {
 
     public void addEdge(int start , int end){
         adjMat[start][end] = 1;
-        adjMat[end][start] = 1;
+//        adjMat[end][start] = 1;
     }
 
 
@@ -49,7 +49,7 @@ public class Graph {
 
     /**
      * 深度优先搜索算法
-     * 使用栈来实现
+     * 使用栈来辅助实现
      */
     public void depthFirstSearch(){
         vertexList[0].wasVisited = true;
@@ -70,6 +70,26 @@ public class Graph {
         }
     }
 
+    /**广度优先搜索
+     *使用队列辅助实现
+     */
+    public void BFirstSearch(){
+        vertexList[0].wasVisited = true;
+        displayVertex(0);
+        queen.push(0);
+        while (!queen.isEmpty()){
+            int a;
+            while((a = getadjUninvisitedVertex(queen.peek())) != -1){
+                vertexList[a].wasVisited = true;
+                displayVertex(a);
+                queen.push(a);
+            }
+            queen.pop();
+        }
+        for(int i = 0 ; i < nVerts ; i ++){
+            vertexList[i].wasVisited = false;
+        }
+    }
 
     public int getadjUninvisitedVertex(int v){
         for(int i = 0 ; i < nVerts ; i ++){
@@ -120,6 +140,58 @@ public class Graph {
         }
     }
 
+    static class Queen{
+        private static final int SIZE = 20;
+        private int[] array;
+        private int rear;
+        private int front;
+        private int size;
+
+
+        public Queen(){
+            this(SIZE);
+        }
+        public Queen(int size1){
+            size = size1;
+            array = new int[size];
+            rear = 0;
+            front = 0;
+        }
+
+        public boolean isEmpty(){
+            return rear == front;
+        }
+
+        public boolean isFull(){
+            return (rear + 1)%size == front;
+        }
+
+        public boolean push(int i){
+            if(isFull()){
+                return  false;
+            }
+            array[rear ++] = i;
+            rear = rear % size;
+            return true;
+        }
+
+        public int pop(){
+            if(isEmpty()){
+                return -1;
+            }
+            int i = array[front++];
+            front = front % size;
+            return i;
+        }
+
+        public int peek(){
+            if(isEmpty()){
+                return -1;
+            }
+            return array[front];
+        }
+    }
+
     public static void main(String[] args) {
         Graph graph = new Graph();
         graph.addVertex("A");
@@ -131,9 +203,25 @@ public class Graph {
         graph.addEdge(1, 2);
         graph.addEdge(2, 3);
         graph.addEdge(3, 4);
-        graph.addEdge(3, 5);
-        graph.addEdge(0, 5);
+        graph.addEdge(0, 4);
+        /*for (int[] ints : graph.adjMat) {
+            for (int anInt : ints) {
+                System.out.printf("%d ",anInt);
+            }
+            System.out.println();
+        }*/
+        graph.BFirstSearch();
+        System.out.println();
         graph.depthFirstSearch();
+        /*Queen queen = new Queen(4);
+        System.out.println(queen.push(1));
+        System.out.println(queen.push(2));
+        System.out.println(queen.push(3));
+        System.out.println(queen.push(4));
+        System.out.println(queen.pop());
+        System.out.println(queen.pop());
+        System.out.println(queen.pop());
+        System.out.println(queen.pop());*/
     }
 
 }
