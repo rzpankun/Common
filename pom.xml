@@ -11,6 +11,7 @@
   <modules>
     <module>CommonTool</module>
     <module>DataStructure</module>
+      <module>TestSpring</module>
   </modules>
 
   <name>Common</name>
@@ -25,7 +26,8 @@
     <redis.clients.jedis>3.0.0</redis.clients.jedis>
     <log4j.log4j.version>1.2.17</log4j.log4j.version>
     <org.slf4j.slf4j-api>1.7.30</org.slf4j.slf4j-api>
-
+    <org.springframework.spring-context>3.2.18.RELEASE</org.springframework.spring-context>
+    <javax.inject.javax.inject>1</javax.inject.javax.inject>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -54,6 +56,16 @@
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-log4j12</artifactId>
         <version>${org.slf4j.slf4j-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>${org.springframework.spring-context}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.inject</groupId>
+        <artifactId>javax.inject</artifactId>
+        <version>${javax.inject.javax.inject}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.zookeeper</groupId>
