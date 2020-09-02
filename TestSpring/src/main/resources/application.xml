@@ -3,9 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:myTag="http://www.chenhao.com/schema/user"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
-        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.chenhao.com/schema/user http://www.chenhao.com/schema/user.xsd">
 
     <bean id="app" class="com.ktiuu.App">
         <property name="a" value="pk"></property>
@@ -17,4 +19,6 @@
             <aop:before method="check" pointcut-ref="myPoint"></aop:before>
         </aop:aspect>
     </aop:config>
+    <myTag:user id="user" email="fdlfj@126.com" userName="fdlfj"></myTag:user>
+    <myTag:phone id="phone" color="green" remark="remark" size="10"></myTag:phone>
 </beans>

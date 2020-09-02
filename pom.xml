@@ -11,7 +11,8 @@
   <modules>
     <module>CommonTool</module>
     <module>DataStructure</module>
-      <module>TestSpring</module>
+    <module>TestSpring</module>
+    <module>SpringBootDemo</module>
   </modules>
 
   <name>Common</name>
@@ -61,6 +62,17 @@
         <groupId>org.springframework</groupId>
         <artifactId>spring-context</artifactId>
         <version>${org.springframework.spring-context}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${org.springframework.spring-context}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.1.0</version>
+        <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>javax.inject</groupId>
