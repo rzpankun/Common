@@ -15,6 +15,7 @@
     <module>SpringBootDemo</module>
     <module>Socket</module>
       <module>Search</module>
+      <module>Concurrent</module>
   </modules>
 
   <name>Common</name>
@@ -34,6 +35,7 @@
     <org.apache.httpcomponents.httpclient>4.5.6</org.apache.httpcomponents.httpclient>
     <com.fasterxml.jackson.core.jackson-databind>2.11.0</com.fasterxml.jackson.core.jackson-databind>
     <org.apache.lucene.lucene-core>8.6.2</org.apache.lucene.lucene-core>
+    <org.apache.zookeeper.zookeeper>3.6.2</org.apache.zookeeper.zookeeper>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -109,6 +111,13 @@
         <artifactId>lucene-queryparser</artifactId>
         <version>${org.apache.lucene.lucene-core}</version>
       </dependency>
+      <!-- https://mvnrepository.com/artifact/org.apache.zookeeper/zookeeper -->
+      <dependency>
+        <groupId>org.apache.zookeeper</groupId>
+        <artifactId>zookeeper</artifactId>
+        <version>${org.apache.zookeeper.zookeeper}</version>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 
