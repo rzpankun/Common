@@ -36,6 +36,9 @@
     <com.fasterxml.jackson.core.jackson-databind>2.11.0</com.fasterxml.jackson.core.jackson-databind>
     <org.apache.lucene.lucene-core>8.6.2</org.apache.lucene.lucene-core>
     <org.apache.zookeeper.zookeeper>3.6.2</org.apache.zookeeper.zookeeper>
+    <com.github.sgroschupf.zkclent>0.1</com.github.sgroschupf.zkclent>
+    <org.apache.curator.curator-framework>2.13.0</org.apache.curator.curator-framework>
+    <org.apache.curator.curator-recipes>2.13.0</org.apache.curator.curator-recipes>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -116,6 +119,24 @@
         <groupId>org.apache.zookeeper</groupId>
         <artifactId>zookeeper</artifactId>
         <version>${org.apache.zookeeper.zookeeper}</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/com.github.sgroschupf/zkclient -->
+      <dependency>
+        <groupId>com.github.sgroschupf</groupId>
+        <artifactId>zkclient</artifactId>
+        <version>${com.github.sgroschupf.zkclent}</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-framework -->
+      <dependency>
+        <groupId>org.apache.curator</groupId>
+        <artifactId>curator-framework</artifactId>
+        <version>${org.apache.curator.curator-framework}</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
+      <dependency>
+        <groupId>org.apache.curator</groupId>
+        <artifactId>curator-recipes</artifactId>
+        <version>${org.apache.curator.curator-recipes}</version>
       </dependency>
 
     </dependencies>
