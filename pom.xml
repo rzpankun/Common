@@ -37,8 +37,8 @@
     <org.apache.lucene.lucene-core>8.6.2</org.apache.lucene.lucene-core>
     <org.apache.zookeeper.zookeeper>3.6.2</org.apache.zookeeper.zookeeper>
     <com.github.sgroschupf.zkclent>0.1</com.github.sgroschupf.zkclent>
-    <org.apache.curator.curator-framework>2.13.0</org.apache.curator.curator-framework>
-    <org.apache.curator.curator-recipes>2.13.0</org.apache.curator.curator-recipes>
+    <org.apache.curator.curator-framework>2.8.0</org.apache.curator.curator-framework>
+    <org.apache.curator.curator-recipes>2.8.0</org.apache.curator.curator-recipes>
   </properties>
   <dependencyManagement>
     <dependencies>
