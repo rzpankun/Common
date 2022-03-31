@@ -30,7 +30,7 @@
     <redis.clients.jedis>3.0.0</redis.clients.jedis>
     <log4j.log4j.version>1.2.17</log4j.log4j.version>
     <org.slf4j.slf4j-api>1.7.30</org.slf4j.slf4j-api>
-    <org.springframework.spring-context>3.2.18.RELEASE</org.springframework.spring-context>
+    <org.springframework.spring-context>5.3.18</org.springframework.spring-context>
     <javax.inject.javax.inject>1</javax.inject.javax.inject>
     <org.apache.httpcomponents.httpclient>4.5.6</org.apache.httpcomponents.httpclient>
     <com.fasterxml.jackson.core.jackson-databind>2.11.0</com.fasterxml.jackson.core.jackson-databind>
